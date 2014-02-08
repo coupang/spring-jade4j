@@ -3,15 +3,17 @@
 	<modelVersion>4.0.0</modelVersion>
     <groupId>de.neuland-bfi</groupId>
 	<artifactId>spring-jade4j</artifactId>
-    <version>0.4.1-SNAPSHOT</version>
+    <version>0.4.1.COUPANG-SNAPSHOT</version>
     <packaging>jar</packaging>
 	<name>spring-jade4j</name>
 	<description>Spring interface to the Jade compiler</description>
+    <!--
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
         <version>7</version>
     </parent>
+    -->
     
     <url>https://github.com/neuland/spring-jade4j</url>
 
@@ -88,6 +90,17 @@
         </profile>
     </profiles>
 
+    <distributionManagement>
+        <repository>
+            <id>devel.coupang.releases</id>
+            <url>${coupang.deploy.url}/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>devel.coupang.snapshot</id>
+            <url>${coupang.deploy.url}/snapshot/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 	<build>
         <pluginManagement>
             <plugins>
@@ -98,7 +111,6 @@
                     <configuration>
                         <mavenExecutorId>forked-path</mavenExecutorId>
                         <useReleaseProfile>false</useReleaseProfile>
-                        <arguments>${arguments} -Psonatype-oss-release</arguments>
                     </configuration>
                 </plugin>
             </plugins>
